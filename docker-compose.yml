@@ -5,7 +5,7 @@ services:
     volumes:
       - ./landing_service/:/app/
     ports:
-      - 8000:8000
+      - "127.0.0.1:8000:8000"
     depends_on:
       - story_service
 
@@ -15,7 +15,7 @@ services:
     volumes:
       - ./story_service/:/app/
     ports:
-      - 8001:8000
+      - "127.0.0.1:8001:8000"
     depends_on:
       - llm_manager_service
 
@@ -35,7 +35,7 @@ services:
     volumes:
       - ./llm_manager_service/:/app/
     ports:
-      - 8002:8000
+      - "127.0.0.1:8002:8000"
     depends_on:
       - redis
 
@@ -45,7 +45,7 @@ services:
     volumes:
       - ./vlm_manager_service/:/app/
     ports:
-      - 8003:8000
+      - "127.0.0.1:8003:8000"
     depends_on:
       - redis
 
@@ -63,7 +63,7 @@ services:
   redis:
     image: redis:latest
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
     volumes:
       - redis_data:/data
 
